@@ -1,13 +1,15 @@
 <?php
 include "config/config.php";
 use src\controller as Controller;
+use src\controller\request as Request;
+use src\controller\response as Response;
 
-$request = new Controller\Request();
+$request = new Request\Request();
 
 if (substr($request->getPath(),0,3) === "api") {
-    $response = new JSONResponse();
+    $response = new Response\JSONResponse();
 } else {
-    $response = new HTMLResponse();
+    $response = new Response\HTMLResponse();
     set_exception_handler("HTMLexceptionHandler");
 }
 
@@ -22,15 +24,20 @@ switch ($request->getPath()) {
     case 'api':
         $controller = new Controller\ApiBaseController($request, $response);
         break;
-    case 'api/films':
-        $controller = new Controller\ApiFilmsController($request, $response);
+    case 'api/authors':
+        $controller = new Controller\ApiAuthorsController($request, $response);
         break;
-    case 'api/actors':
-        $controller = new Controller\ApiActorsController($request, $response);
+    case 'api/papers':
+        $controller = new Controller\ApiPapersController($request, $response);
         break;
+    // case 'api/authenticate':
+    //     $controller = new Controller\ApiAuthController($request, $response);
+    //     break; 
+    // case 'api/readinglist':
+    //     $controller = new Controller\ApiReadingListController($request, $response);
+    //     break;   
     default:
         $controller = new Controller\ErrorController($request, $response);
         break;
 }
-
-echo $response->getData();
+echo $response->getData();  

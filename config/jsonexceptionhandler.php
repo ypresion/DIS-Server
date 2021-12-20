@@ -3,6 +3,7 @@
 function JSONexceptionHandler($e) {
     header("Access-Control-Allow-Origin: *");
     header("Content-Type: application/json; charset=UTF-8");
+    header("HTTP/1.1 500 Internal Server Error");
 
     $output['error'] = "internal server error! (Status 500)";
 

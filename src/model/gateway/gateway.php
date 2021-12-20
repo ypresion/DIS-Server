@@ -1,6 +1,8 @@
 <?php
 
-namespace src\gateway;
+namespace src\model\gateway;
+
+use src\model as Model;
 
 abstract class Gateway {
 
@@ -8,7 +10,7 @@ abstract class Gateway {
     private $result;
 
     protected function setDatabase($database) {
-        $this->database = new Database($database);
+        $this->database = new Model\Database($database);
     }
 
     protected function getDatabase() {

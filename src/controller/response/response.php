@@ -1,6 +1,6 @@
 <?php
 
-namespace src\response;
+namespace src\controller\response;
 
 /**
  * The data is no longer passed to the constructor as a parameter

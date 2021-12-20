@@ -1,4 +1,13 @@
 <?php
+/**
+ * Generate a webpage
+ * 
+ * This class will create a valid HTML5 webpage 
+ * with a head and a foot. The setBody method
+ * can be used to add to the page
+ * 
+ * @author Sylwia Krupa
+ */
 
 abstract class Webpage 
 {
@@ -6,6 +15,16 @@ abstract class Webpage
     private $foot;
     private $body;
 
+    /**
+     * constructor
+     * 
+     * Create the head body and foot of the page.
+     * This will be a valid HTML5 page with just
+     * a heading.
+     * 
+     * @param string $title   The page title
+     * @param string $heading The h1 for the site
+     */
     public function __construct($title, $heading) {
         $this->setHead($title);
         $this->addHeading1($heading);

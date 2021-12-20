@@ -1,6 +1,6 @@
 <?php
 
-define('BASEPATH', '/kf6012/week5/');
+define('BASEPATH', '/kf6012/coursework/part1/');
 define('DIS_DATABASE', 'db/dis.sqlite');
 define('USER_DATABASE', 'db/user.sqlite');
 define('DEVELOPMENT_MODE', true);

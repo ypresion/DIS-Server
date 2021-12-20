@@ -1,5 +1,6 @@
 <?php
 
+namespace src\model;
 /**
  * Connect and interact with an SQLite database 
  * 
@@ -15,9 +16,9 @@ class Database
 
     private function setDbConnection($dbName) {
         try {           
-            $this->dbConnection = new PDO('sqlite:'.$dbName);
-            $this->dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch( PDOException $e ) {
+            $this->dbConnection = new \PDO('sqlite:'.$dbName);
+            $this->dbConnection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        } catch( \PDOException $e ) {
             echo "Database Connection Error: " . $e->getMessage();
             exit();
         }
@@ -37,6 +38,6 @@ class Database
         $stmt = $this->dbConnection->prepare($sql);
         $stmt->execute($params);
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 }

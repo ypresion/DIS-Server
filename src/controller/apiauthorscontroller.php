@@ -2,10 +2,12 @@
 
 namespace src\controller;
 
-class ApiActorsController extends Controller {
+use src\model\gateway as Gateway;
+
+class ApiAuthorsController extends Controller {
     
     protected function setGateway() {
-        $this->gateway = new ActorGateway();
+        $this->gateway = new Gateway\ApiAuthorsGateway();
     }
     
     protected function processRequest() {

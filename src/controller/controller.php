@@ -41,4 +41,8 @@ abstract class Controller {
         return $this->gateway;
     }
 
+    protected function processRequest() {
+
+    } 
+
 }

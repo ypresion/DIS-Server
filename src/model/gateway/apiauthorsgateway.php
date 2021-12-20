@@ -1,23 +1,23 @@
 <?php
 
-namespace src\gateway;
+namespace src\model\gateway;
 
-class ActorGateway extends Gateway  {
+class ApiAuthorsGateway extends Gateway  {
 
     public function __construct() {
-        $this->setDatabase(DATABASE);
+        $this->setDatabase(DIS_DATABASE);
     }
 
     public function findAll()
     {
-        $sql = "SELECT * FROM actor";
+        $sql = "SELECT * FROM author";
         $result = $this->getDatabase()->executeSQL($sql);
         $this->setResult($result);
     }
 
     public function findOne($id)
     {
-        $sql = "SELECT * FROM actor WHERE actor_id = :id";
+        $sql = "SELECT * FROM author WHERE author_id = :id";
         $params = ["id" => $id];
         $result = $this->getDatabase()->executeSQL($sql, $params);
         $this->setResult($result);

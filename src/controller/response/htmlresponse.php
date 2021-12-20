@@ -1,6 +1,6 @@
 <?php 
 
-namespace src\response;
+namespace src\controller\response;
 
 class HTMLResponse extends Response
 {
