@@ -24,6 +24,24 @@ EOT;
         $this->setResult($result);
     }
 
+    public function findRandom()
+    {
+        $sql = <<<EOT
+        SELECT p.paper_id, p.title, p.abstract, GROUP_CONCAT(a.first_name || ' ' || a.last_name) as authors, GROUP_CONCAT(distinct at.name) as awards
+        FROM paper p
+        INNER JOIN paper_author pa ON p.paper_id = pa.paper_id
+        INNER JOIN author a ON pa.author_id=a.author_id
+        LEFT JOIN award aw ON p.paper_id=aw.paper_id 
+        LEFT JOIN award_type at ON aw.award_type_id=at.award_type_id
+        GROUP BY p.paper_id
+        ORDER BY random()
+        LIMIT 1
+EOT;
+
+        $result = $this->getDatabase()->executeSQL($sql);
+        $this->setResult($result);
+    }
+
     public function findById($id)
     {
         $sql = <<<EOT
@@ -31,8 +49,8 @@ EOT;
         FROM paper p
         INNER JOIN paper_author pa ON p.paper_id = pa.paper_id
         INNER JOIN author a ON pa.author_id=a.author_id
-        INNER JOIN award aw ON p.paper_id=aw.paper_id 
-        INNER JOIN award_type at ON aw.award_type_id=at.award_type_id
+        LEFT JOIN award aw ON p.paper_id=aw.paper_id 
+        LEFT JOIN award_type at ON aw.award_type_id=at.award_type_id
         WHERE p.paper_id = :id
         GROUP BY p.paper_id
 EOT;
@@ -49,8 +67,8 @@ EOT;
         FROM paper p
         INNER JOIN paper_author pa ON p.paper_id = pa.paper_id
         INNER JOIN author a ON pa.author_id=a.author_id
-        INNER JOIN award aw ON p.paper_id=aw.paper_id 
-        INNER JOIN award_type at ON aw.award_type_id=at.award_type_id
+        LEFT JOIN award aw ON p.paper_id=aw.paper_id 
+        LEFT JOIN award_type at ON aw.award_type_id=at.award_type_id
         WHERE pa.author_id = :id
         GROUP BY p.paper_id
 EOT;
@@ -67,8 +85,8 @@ EOT;
         FROM paper p
         INNER JOIN paper_author pa ON p.paper_id = pa.paper_id
         INNER JOIN author a ON pa.author_id=a.author_id
-        INNER JOIN award aw ON p.paper_id=aw.paper_id 
-        INNER JOIN award_type at ON aw.award_type_id=at.award_type_id
+        LEFT JOIN award aw ON p.paper_id=aw.paper_id 
+        LEFT JOIN award_type at ON aw.award_type_id=at.award_type_id
         WHERE aw.award_type_id = :id
         GROUP BY p.paper_id
 EOT;

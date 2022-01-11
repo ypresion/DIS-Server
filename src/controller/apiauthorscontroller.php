@@ -12,12 +12,17 @@ class ApiAuthorsController extends Controller {
     
     protected function processRequest() {
 
-        $id = $this->getRequest()->getParameter("id");
+        if ($this->getRequest()->getRequestMethod() === "GET") {
+            $id = $this->getRequest()->getParameter("id");
 
-        if (!is_null($id)) {
-           $this->getGateway()->findOne($id);
+            if (!is_null($id)) {
+            $this->getGateway()->findOne($id);
+            } else {
+            $this->getGateway()->findAll();
+            }
         } else {
-           $this->getGateway()->findAll();
+            $this->getResponse()->setMessage("Method not supported");
+            $this->getResponse()->setStatusCode(405);
         }
 
         return $this->getGateway()->getResult();

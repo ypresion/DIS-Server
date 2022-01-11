@@ -5,8 +5,6 @@ function JSONexceptionHandler($e) {
     header("Content-Type: application/json; charset=UTF-8");
     header("HTTP/1.1 500 Internal Server Error");
 
-    $output['error'] = "internal server error! (Status 500)";
-
     if (DEVELOPMENT_MODE) {
         $output['Message'] = $e->getMessage();
         $output['File'] = $e->getFile();

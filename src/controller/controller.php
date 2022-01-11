@@ -29,7 +29,7 @@ abstract class Controller {
         $this->response = $response;
     }
 
-    private function getResponse() {
+    protected function getResponse() {
         return $this->response;
     }
 

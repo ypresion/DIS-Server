@@ -4,13 +4,39 @@ namespace src\controller\response;
 
 class JSONResponse extends Response
 {
+    private $message;
+    private $statusCode;
+
     protected function headers() {
         header("Access-Control-Allow-Origin: *");
         header("Content-Type: application/json; charset=UTF-8");
-        header("HTTP/1.1 200 OK");
     }
  
     public function getData() {
-        return json_encode($this->data);
+
+        if (is_null($this->message)) {
+            if (count($this->data) === 0) {
+                $this->message = "No content";
+                $this->statusCode = 204;
+            } else {
+                $this->message = "Ok";
+                $this->statusCode = 200;
+            }
+        }
+        
+        http_response_code($this->statusCode);
+
+        $response['message'] = $this->message;
+        $response['count'] = count($this->data);
+        $response['results'] = $this->data;
+        return json_encode($response);
+    }
+
+    public function setMessage($message) {
+        $this->message = $message;
+    }
+
+    public function setStatusCode($statusCode) {
+        $this->statusCode = $statusCode;
     }
 }
