@@ -30,6 +30,9 @@ switch ($request->getPath()) {
     case 'api/papers':
         $controller = new Controller\ApiPapersController($request, $response);
         break;
+    case 'api/awards':
+        $controller = new Controller\ApiAwardsController($request, $response);
+        break;
     case 'api/authenticate':
         $controller = new Controller\ApiAuthController($request, $response);
         break; 
