@@ -36,9 +36,9 @@ switch ($request->getPath()) {
     case 'api/authenticate':
         $controller = new Controller\ApiAuthController($request, $response);
         break; 
-    // case 'api/readinglist':
-    //     $controller = new Controller\ApiReadingListController($request, $response);
-    //     break;   
+    case 'api/readinglist':
+        $controller = new Controller\ApiReadingListController($request, $response);
+        break;   
     default:
         $controller = new Controller\ErrorController($request, $response);
         break;
