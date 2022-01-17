@@ -17,7 +17,7 @@ use src\view as View;
 class DocumentationController extends Controller {
 
     protected function processRequest() {
-        $page = new View\DocumentationPage("Documentation","These are the docs");
+        $page = new View\DocumentationPage("Documentation","Endpoints available:");
         return $page->generateWebpage();
     }
 }
