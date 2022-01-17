@@ -2,6 +2,17 @@
 
 namespace src\controller;
 
+/**
+ * An abstract Controller class.
+ * 
+ * This class defines basic methods for responding to user requests.
+ * It is reponsible for setting the gateway, request and response 
+ * objects, while leaving the implementation of the processing of the 
+ * requests to its children.
+ *
+ * @author Sylwia Krupa | w18015597 <w18015597@northumbria.ac.uk>
+ * @version 2021.01
+ */
 abstract class Controller {
 
     private $request;

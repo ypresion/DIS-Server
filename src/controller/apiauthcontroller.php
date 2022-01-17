@@ -5,12 +5,30 @@ namespace src\controller;
 use src\model\gateway as Gateway;
 use src\Firebase\JWT\JWT;
 
+/**
+ * An implementation of authentication controller for the API.
+ * 
+ * This class is responsible for processing authentication requests
+ * to the API. It verifies user credentials and creates a JWT token 
+ * on successful verification.
+ *
+ * @author Sylwia Krupa | w18015597 <w18015597@northumbria.ac.uk>
+ * @version 2021.01
+ */
 class ApiAuthController extends Controller {
     
     protected function setGateway() {
         $this->gateway = new Gateway\UserGateway();
     }
     
+    /** 
+     * This method will process a POST authentication request: it will
+     * verify user email and password and set an appropriate response.
+     * If user is verified, it will create a JWT token; otherwise it 
+     * will set an appropriate status code and message denying authentication.
+     *
+     * @return array
+     */
     protected function processRequest() {
         $data = [];
 

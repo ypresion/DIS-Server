@@ -1,4 +1,11 @@
 <?php
+
+/** 
+ * This method will attempt to autoload php classes 
+ * used in the application.
+ * 
+ * @return void
+ */
 function autoloader($className) {
     $filename = strtolower($className) . ".php";
     $filename = str_replace('\\', DIRECTORY_SEPARATOR, $filename);

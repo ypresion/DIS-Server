@@ -1,5 +1,10 @@
 <?php
 
+/** 
+ * This config file defines constants, autoloader, 
+ * error and exception handlers for the application.
+ */
+
 define('BASEPATH', '/kf6012/coursework/part1/');
 define('DIS_DATABASE', 'db/dis.sqlite');
 define('USER_DATABASE', 'db/user.sqlite');

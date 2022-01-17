@@ -2,6 +2,15 @@
 
 namespace src\model\gateway;
 
+/**
+ * An implementation of reading list gateway for the API.
+ * 
+ * This class is provides methods for finding, adding and 
+ * removing user's reading list items.
+ *
+ * @author Sylwia Krupa | w18015597 <w18015597@northumbria.ac.uk>
+ * @version 2021.01
+ */
 class ListGateway extends Gateway  {
 
     public function __construct() {

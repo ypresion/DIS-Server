@@ -1,5 +1,11 @@
 <?php 
 
+/** 
+ * This method will handle exceptions and return 
+ * output in a JSON format. 
+ * 
+ * @return string|bool
+ */
 function JSONexceptionHandler($e) {
     header("Access-Control-Allow-Origin: *");
     header("Content-Type: application/json; charset=UTF-8");

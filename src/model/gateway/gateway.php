@@ -4,6 +4,15 @@ namespace src\model\gateway;
 
 use src\model as Model;
 
+/**
+ * An abstract Gateway class.
+ * 
+ * This class provides basic methods for interacting with 
+ * provided database.
+ *
+ * @author Sylwia Krupa | w18015597 <w18015597@northumbria.ac.uk>
+ * @version 2021.01
+ */
 abstract class Gateway {
 
     private $database;

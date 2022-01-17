@@ -2,6 +2,16 @@
 
 namespace src\controller\request;
 
+/**
+ * Request class providing necessary methods to work with HTTP requests
+ * 
+ * This class provides basic means of working with an incoming request. 
+ * It is responsible for stripping the URL of basepath and providing methods
+ * for retrieving the path and parameters from the request.
+ *
+ * @author Sylwia Krupa | w18015597 <w18015597@northumbria.ac.uk>
+ * @version 2021.01
+ */
 class Request {
 
 

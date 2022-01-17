@@ -2,6 +2,15 @@
 
 namespace src\model\gateway;
 
+/**
+ * An implementation of papers gateway for the API.
+ * 
+ * This class is provides methods for finding all DIS papers or 
+ * finding them by id, at random, by author id or award. 
+ *
+ * @author Sylwia Krupa | w18015597 <w18015597@northumbria.ac.uk>
+ * @version 2021.01
+ */
 class ApiPapersGateway extends Gateway {
 
     public function __construct() {
@@ -91,7 +100,6 @@ EOT;
         GROUP BY p.paper_id
 EOT;
 
-        $sql = "SELECT * FROM paper p INNER JOIN award a ON p.paper_id = a.paper_id WHERE a.award_type_id = :id";
         $params = ["id" => $award];
         $result = $this->getDatabase()->executeSQL($sql, $params);
         $this->setResult($result);

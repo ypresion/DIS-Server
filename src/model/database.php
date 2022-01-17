@@ -2,9 +2,13 @@
 
 namespace src\model;
 /**
- * Connect and interact with an SQLite database 
+ * Connect and interact with an SQLite database.
  * 
- * @author FIRST LAST w12345
+ * This class provides basic methods for seetting up a connection 
+ * with an SQLite database and executing SQL queries.
+ * 
+ * @author Sylwia Krupa | w18015597 <w18015597@northumbria.ac.uk>
+ * @version 2021.01
  */
 class Database 
 {
@@ -24,16 +28,6 @@ class Database
         }
      }
 
-    /**
-     * Execute an SQL prepared statement
-     *
-     * This function executes the query and uses the PDO 'fetchAll' method with the
-     * 'FETCH_ASSOC' flag set so that an associative array of results is returned.
-     *
-     * @param  string  $sql     An SQL statement
-     * @param  array   $params  An associative array of parameters (default empty array) 
-     * @return array            An associative array of the query results
-     */
     public function executeSQL($sql, $params=[]) { 
         $stmt = $this->dbConnection->prepare($sql);
         $stmt->execute($params);

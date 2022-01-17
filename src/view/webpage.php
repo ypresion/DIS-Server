@@ -1,4 +1,7 @@
 <?php
+
+namespace src\view;
+
 /**
  * Generate a webpage
  * 
@@ -6,10 +9,11 @@
  * with a head and a foot. The setBody method
  * can be used to add to the page
  * 
- * @author Sylwia Krupa
+ * @author Sylwia Krupa | w18015597 <w18015597@northumbria.ac.uk>
+ * @version 2021.01
  */
 
-abstract class Webpage 
+abstract class Webpage
 {
     private $head;
     private $foot;
@@ -25,13 +29,15 @@ abstract class Webpage
      * @param string $title   The page title
      * @param string $heading The h1 for the site
      */
-    public function __construct($title, $heading) {
+    public function __construct($title, $heading)
+    {
         $this->setHead($title);
         $this->addHeading1($heading);
         $this->setFoot();
-    } 
+    }
 
-    protected function setHead($title) {
+    protected function setHead($title)
+    {
         $css = BASEPATH . "assets/style.css";
         $this->head = <<<EOT
 <!DOCTYPE html>
@@ -45,40 +51,47 @@ abstract class Webpage
 EOT;
     }
 
-    private function getHead() {
+    private function getHead()
+    {
         return $this->head;
     }
 
-    protected function setBody($text) {
+    protected function setBody($text)
+    {
         $this->body .= $text;
     }
 
-    private function getBody() {
+    private function getBody()
+    {
         return $this->body;
     }
 
 
-    protected function setFoot() {
-	      $this->foot = <<<EOT
+    protected function setFoot()
+    {
+        $this->foot = <<<EOT
 </body>
 </html>
 EOT;
     }
 
-    private function getFoot() {
+    private function getFoot()
+    {
         return $this->foot;
     }
 
-    protected function addHeading1($text) {
+    protected function addHeading1($text)
+    {
         $this->setBody("<h1>$text</h1>");
     }
 
-    public function addParagraph($text) {
+    public function addParagraph($text)
+    {
         $this->setBody("<p>$text</p>");
     }
-    
-    public function generateWebpage() {
+
+    public function generateWebpage()
+    {
         return $this->head . $this->body . $this->foot;
     }
-
 }

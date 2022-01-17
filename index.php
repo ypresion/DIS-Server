@@ -4,18 +4,31 @@ use src\controller as Controller;
 use src\controller\request as Request;
 use src\controller\response as Response;
 
+/**
+ * Handle incoming requests.
+ * 
+ * This is the base index file responsible for setting appropriate 
+ * controllers based on the URL requested. Additionally, it sets 
+ * appropriate response and exception handlers.
+ *
+ * @author Sylwia Krupa | w18015597 <w18015597@northumbria.ac.uk>
+ * @version 2021.01
+ */
+
 $request = new Request\Request();
 
+//Set response to be in JSON format for API endpoints 
 if (substr($request->getPath(),0,3) === "api") {
     $response = new Response\JSONResponse();
 } else {
     $response = new Response\HTMLResponse();
+    //JSON exception handler is set as default in config
+    //and it needs to be changed for HTML pages. 
     set_exception_handler("HTMLexceptionHandler");
 }
 
 switch ($request->getPath()) {
     case '':
-    case 'home':
         $controller = new Controller\HomeController($request, $response);
         break;
     case 'documentation':

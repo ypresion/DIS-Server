@@ -2,6 +2,15 @@
 
 namespace src\model\gateway;
 
+/**
+ * An implementation of user gateway for the API.
+ * 
+ * This class is provides a method for finding a password 
+ * hash for email given.
+ *
+ * @author Sylwia Krupa | w18015597 <w18015597@northumbria.ac.uk>
+ * @version 2021.01
+ */
 class UserGateway extends Gateway {
 
     public function __construct() {

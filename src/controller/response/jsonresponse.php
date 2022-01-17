@@ -2,6 +2,16 @@
 
 namespace src\controller\response;
 
+/**
+ * An implementation of a JSON response to the client.
+ * 
+ * This class provides basic methods to create a response in a JSON format. 
+ * It sets appropriate headers and provides methods
+ * to set a custom message and an appropriate status code.
+ *
+ * @author Sylwia Krupa | w18015597 <w18015597@northumbria.ac.uk>
+ * @version 2021.01
+ */
 class JSONResponse extends Response
 {
     private $message;
@@ -12,6 +22,12 @@ class JSONResponse extends Response
         header("Content-Type: application/json; charset=UTF-8");
     }
  
+    /** 
+     * This method will set an appropriate status code if one was not set manually,
+     * and encode the response in a JSON format.
+     *
+     * @return string|bool
+     */
     public function getData() {
 
         if (is_null($this->message)) {
