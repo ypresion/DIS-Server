@@ -20,7 +20,7 @@ class ApiPapersGateway extends Gateway {
     public function findAll()
     {
         $sql = <<<EOT
-        SELECT p.paper_id, p.title, p.abstract, GROUP_CONCAT(a.first_name || ' ' || a.last_name) as authors, GROUP_CONCAT(distinct at.name) as awards
+        SELECT p.paper_id, p.title, p.abstract, GROUP_CONCAT(a.first_name || ' ' || a.last_name) as authors, GROUP_CONCAT(distinct at.award_type_id || '- ' || at.name) as awards
         FROM paper p
         INNER JOIN paper_author pa ON p.paper_id = pa.paper_id
         INNER JOIN author a ON pa.author_id=a.author_id
@@ -36,7 +36,7 @@ EOT;
     public function findRandom()
     {
         $sql = <<<EOT
-        SELECT p.paper_id, p.title, p.abstract, GROUP_CONCAT(a.first_name || ' ' || a.last_name) as authors, GROUP_CONCAT(distinct at.name) as awards
+        SELECT p.paper_id, p.title, p.abstract, GROUP_CONCAT(a.first_name || ' ' || a.last_name) as authors, GROUP_CONCAT(distinct at.award_type_id || '- ' || at.name) as awards
         FROM paper p
         INNER JOIN paper_author pa ON p.paper_id = pa.paper_id
         INNER JOIN author a ON pa.author_id=a.author_id
@@ -54,7 +54,7 @@ EOT;
     public function findById($id)
     {
         $sql = <<<EOT
-        SELECT p.paper_id, p.title, p.abstract, GROUP_CONCAT(a.first_name || ' ' || a.last_name) as authors, GROUP_CONCAT(distinct at.name) as awards
+        SELECT p.paper_id, p.title, p.abstract, GROUP_CONCAT(a.first_name || ' ' || a.last_name) as authors, GROUP_CONCAT(distinct at.award_type_id || '- ' || at.name) as awards
         FROM paper p
         INNER JOIN paper_author pa ON p.paper_id = pa.paper_id
         INNER JOIN author a ON pa.author_id=a.author_id
@@ -72,7 +72,7 @@ EOT;
     public function findByAuthorId($authorid)
     {
         $sql = <<<EOT
-        SELECT p.paper_id, p.title, p.abstract, GROUP_CONCAT(a.first_name || ' ' || a.last_name) as authors, GROUP_CONCAT(distinct at.name) as awards
+        SELECT p.paper_id, p.title, p.abstract, GROUP_CONCAT(a.first_name || ' ' || a.last_name) as authors, GROUP_CONCAT(distinct at.award_type_id || '- ' || at.name) as awards
         FROM paper p
         INNER JOIN paper_author pa ON p.paper_id = pa.paper_id
         INNER JOIN author a ON pa.author_id=a.author_id
@@ -90,7 +90,7 @@ EOT;
     public function findByAward($award)
     {
         $sql = <<<EOT
-        SELECT p.paper_id, p.title, p.abstract, GROUP_CONCAT(a.first_name || ' ' || a.last_name) as authors, GROUP_CONCAT(distinct at.name) as awards
+        SELECT p.paper_id, p.title, p.abstract, GROUP_CONCAT(a.first_name || ' ' || a.last_name) as authors, GROUP_CONCAT(distinct at.award_type_id || '- ' || at.name) as awards
         FROM paper p
         INNER JOIN paper_author pa ON p.paper_id = pa.paper_id
         INNER JOIN author a ON pa.author_id=a.author_id

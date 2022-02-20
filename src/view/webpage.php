@@ -38,14 +38,12 @@ abstract class Webpage
 
     protected function setHead($title)
     {
-        $css = BASEPATH . "assets/style.css";
         $this->head = <<<EOT
 <!DOCTYPE html>
 <html lang="en-gb">
 <head>
     <title>$title</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href=$css>
 </head>
 <body>
 EOT;

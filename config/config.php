@@ -8,7 +8,7 @@
 define('BASEPATH', '/kf6012/coursework/part1/');
 define('DIS_DATABASE', 'db/dis.sqlite');
 define('USER_DATABASE', 'db/user.sqlite');
-define('DEVELOPMENT_MODE', true);
+define('DEVELOPMENT_MODE', false);
 define('SECRET_KEY', 'LK2CyJtPjBVuc5lcyuIxJ1seI1U0bPHv');
 
 ini_set('display_errors', DEVELOPMENT_MODE);
